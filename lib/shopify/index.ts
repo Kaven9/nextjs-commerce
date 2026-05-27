@@ -31,6 +31,7 @@ import {
   getProductRecommendationsQuery,
   getProductsQuery,
 } from "./queries/product";
+import { getSearchSuggestionsQuery } from "./queries/search";
 import {
   Cart,
   Collection,
@@ -39,6 +40,7 @@ import {
   Menu,
   Page,
   Product,
+  SearchSuggestion,
   ShopifyAddToCartOperation,
   ShopifyCart,
   ShopifyCartOperation,
@@ -55,6 +57,7 @@ import {
   ShopifyProductRecommendationsOperation,
   ShopifyProductsOperation,
   ShopifyRemoveFromCartOperation,
+  ShopifySearchSuggestionsOperation,
   ShopifyUpdateCartOperation,
 } from "./types";
 
@@ -475,6 +478,27 @@ export async function getProductRecommendations(
   });
 
   return reshapeProducts(res.body.data.productRecommendations);
+}
+
+export async function getSearchSuggestions(
+  query: string
+): Promise<SearchSuggestion[]> {
+  if (!endpoint) {
+    console.log(
+      "Skipping getSearchSuggestions - Shopify not configured"
+    );
+    return [];
+  }
+
+  const res = await shopifyFetch<ShopifySearchSuggestionsOperation>({
+    query: getSearchSuggestionsQuery,
+    variables: {
+      query,
+      first: 5,
+    },
+  });
+
+  return res.body.data.predictiveSearch?.products || [];
 }
 
 export async function getProducts({

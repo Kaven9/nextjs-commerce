@@ -44,12 +44,12 @@ export default async function Footer() {
         <div className="md:ml-auto">
           <a
             className="flex h-8 w-max flex-none items-center justify-center rounded-md border border-neutral-200 bg-white text-xs text-black dark:border-neutral-700 dark:bg-black dark:text-white"
-            aria-label="Deploy on Vercel"
+            aria-label="在 Vercel 上部署"
             href="https://vercel.com/templates/next.js/nextjs-commerce"
           >
             <span className="px-3">▲</span>
             <hr className="h-full border-r border-neutral-200 dark:border-neutral-700" />
-            <span className="px-3">Deploy</span>
+            <span className="px-3">部署</span>
           </a>
         </div>
       </div>
@@ -60,15 +60,15 @@ export default async function Footer() {
             {copyrightName.length && !copyrightName.endsWith(".")
               ? "."
               : ""}{" "}
-            All rights reserved.
+            版权所有
           </p>
           <hr className="mx-4 hidden h-4 w-[1px] border-l border-neutral-400 md:inline-block" />
           <p>
-            <a href="https://github.com/vercel/commerce">View the source</a>
+            <a href="https://github.com/vercel/commerce">查看源码</a>
           </p>
           <p className="md:ml-auto">
             <a href="https://vercel.com" className="text-black dark:text-white">
-              Created by ▲ Vercel
+              由 ▲ Vercel 构建
             </a>
           </p>
         </div>

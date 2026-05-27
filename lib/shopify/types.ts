@@ -260,6 +260,29 @@ export type ShopifyProductRecommendationsOperation = {
   };
 };
 
+export type SearchSuggestion = {
+  id: string;
+  handle: string;
+  title: string;
+  featuredImage: Image;
+  priceRange: {
+    minVariantPrice: Money;
+    maxVariantPrice: Money;
+  };
+};
+
+export type ShopifySearchSuggestionsOperation = {
+  data: {
+    predictiveSearch: {
+      products: SearchSuggestion[];
+    };
+  };
+  variables: {
+    query: string;
+    first: number;
+  };
+};
+
 export type ShopifyProductsOperation = {
   data: {
     products: Connection<ShopifyProduct>;

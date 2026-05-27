@@ -8,7 +8,7 @@ export function WelcomeToast() {
     // ignore if screen height is too small
     if (window.innerHeight < 650) return;
     if (!document.cookie.includes("welcome-toast=2")) {
-      toast("🛍️ Welcome to Next.js Commerce!", {
+      toast("🛍️ 欢迎来到 Next.js Commerce！", {
         id: "welcome-toast",
         duration: Infinity,
         onDismiss: () => {
@@ -16,14 +16,13 @@ export function WelcomeToast() {
         },
         description: (
           <>
-            This is a high-performance, SSR storefront powered by Shopify,
-            Next.js, and Vercel.{" "}
+            这是一个由 Shopify、Next.js 和 Vercel 驱动的高性能 SSR 商店前端。{" "}
             <a
               href="https://vercel.com/templates/next.js/nextjs-commerce"
               className="text-blue-600 hover:underline"
               target="_blank"
             >
-              Deploy your own
+              部署你自己的
             </a>
             .
           </>

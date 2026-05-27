@@ -6,7 +6,7 @@ export type SortFilterItem = {
 };
 
 export const defaultSort: SortFilterItem = {
-  title: "Relevance",
+  title: "相关度",
   slug: null,
   sortKey: "RELEVANCE",
   reverse: false,
@@ -15,25 +15,25 @@ export const defaultSort: SortFilterItem = {
 export const sorting: SortFilterItem[] = [
   defaultSort,
   {
-    title: "Trending",
+    title: "热门",
     slug: "trending-desc",
     sortKey: "BEST_SELLING",
     reverse: false,
   }, // asc
   {
-    title: "Latest arrivals",
+    title: "最新上架",
     slug: "latest-desc",
     sortKey: "CREATED_AT",
     reverse: true,
   },
   {
-    title: "Price: Low to high",
+    title: "价格从低到高",
     slug: "price-asc",
     sortKey: "PRICE",
     reverse: false,
   }, // asc
   {
-    title: "Price: High to low",
+    title: "价格从高到低",
     slug: "price-desc",
     sortKey: "PRICE",
     reverse: true,
@@ -49,3 +49,14 @@ export const TAGS = {
 export const HIDDEN_PRODUCT_TAG = "nextjs-frontend-hidden";
 export const DEFAULT_OPTION = "Default Title";
 export const SHOPIFY_GRAPHQL_API_ENDPOINT = "/api/2023-01/graphql.json";
+
+export const POPULAR_SEARCHES = [
+  "T-Shirt",
+  "Hoodie",
+  "Sneakers",
+  "Hat",
+  "Jacket",
+  "Bags",
+  "Shorts",
+  "Accessories",
+];
