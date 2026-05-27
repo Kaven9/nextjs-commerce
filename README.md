@@ -1,75 +1,87 @@
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fcommerce&project-name=commerce&repo-name=commerce&demo-title=Next.js%20Commerce&demo-url=https%3A%2F%2Fdemo.vercel.store&demo-image=https%3A%2F%2Fbigcommerce-demo-asset-ksvtgfvnd.vercel.app%2Fbigcommerce.png&env=COMPANY_NAME,SHOPIFY_REVALIDATION_SECRET,SHOPIFY_STORE_DOMAIN,SHOPIFY_STOREFRONT_ACCESS_TOKEN,SITE_NAME)
+# Next.js 中文电商网站
 
-# Next.js Commerce
+基于 Next.js 16 + React 19 + Shopify Storefront API 构建的高性能中文电商平台，采用 App Router、Server Components 和现代 React 特性。
 
-A high-performance, server-rendered Next.js App Router ecommerce application.
+## 功能特性
 
-This template uses React Server Components, Server Actions, `Suspense`, `useOptimistic`, and more.
+| 模块 | 功能 |
+|------|------|
+| 商品浏览 | 首页网格展示、轮播图、分类筛选 |
+| 商品搜索 | 实时搜索建议、热门搜索、搜索历史、结果排序 |
+| 商品详情 | 图片画廊、变体选择器（颜色/尺寸）、相关推荐 |
+| 购物车 | 侧边栏购物车、增删改、实时价格、Shopify 结算 |
+| 用户认证 | 登录/注册（Shopify Customer Account API）、用户菜单 |
+| 用户账户 | 个人信息查看、订单历史（状态中文化） |
+| SEO | 动态 Meta、Open Graph、Schema.org JSON-LD、Sitemap |
+| 响应式 | 移动端适配、深色模式 |
+| 性能优化 | Server Components、ISR 缓存、图片优化（AVIF/WebP） |
 
-<h3 id="v1-note"></h3>
+## 技术栈
 
-> Note: Looking for Next.js Commerce v1? View the [code](https://github.com/vercel/commerce/tree/v1), [demo](https://commerce-v1.vercel.store), and [release notes](https://github.com/vercel/commerce/releases/tag/v1).
+- **框架**：Next.js 16.2.1（App Router、Turbopack）
+- **UI**：React 19（Server Components、useActionState、useOptimistic）
+- **样式**：Tailwind CSS v4
+- **电商平台**：Shopify Storefront API（GraphQL）
+- **认证**：NextAuth.js v5
+- **语言**：TypeScript 5.8
+- **包管理**：pnpm
 
-## Providers
+## 快速开始
 
-Vercel will only be actively maintaining a Shopify version [as outlined in our vision and strategy for Next.js Commerce](https://github.com/vercel/commerce/pull/966).
+### 1. 配置环境变量
 
-Vercel is happy to partner and work with any commerce provider to help them get a similar template up and running and listed below. Alternative providers should be able to fork this repository and swap out the `lib/shopify` file with their own implementation while leaving the rest of the template mostly unchanged.
+复制 `.env.example` 为 `.env.local`，填写以下变量：
 
-- Shopify (this repository)
-- [BigCommerce](https://github.com/bigcommerce/nextjs-commerce) ([Demo](https://next-commerce-v2.vercel.app/))
-- [Ecwid by Lightspeed](https://github.com/Ecwid/ecwid-nextjs-commerce/) ([Demo](https://ecwid-nextjs-commerce.vercel.app/))
-- [Geins](https://github.com/geins-io/vercel-nextjs-commerce) ([Demo](https://geins-nextjs-commerce-starter.vercel.app/))
-- [Medusa](https://github.com/medusajs/vercel-commerce) ([Demo](https://medusa-nextjs-commerce.vercel.app/))
-- [Prodigy Commerce](https://github.com/prodigycommerce/nextjs-commerce) ([Demo](https://prodigy-nextjs-commerce.vercel.app/))
-- [Saleor](https://github.com/saleor/nextjs-commerce) ([Demo](https://saleor-commerce.vercel.app/))
-- [Shopware](https://github.com/shopwareLabs/vercel-commerce) ([Demo](https://shopware-vercel-commerce-react.vercel.app/))
-- [Swell](https://github.com/swellstores/verswell-commerce) ([Demo](https://verswell-commerce.vercel.app/))
-- [Umbraco](https://github.com/umbraco/Umbraco.VercelCommerce.Demo) ([Demo](https://vercel-commerce-demo.umbraco.com/))
-- [Wix](https://github.com/wix/headless-templates/tree/main/nextjs/commerce) ([Demo](https://wix-nextjs-commerce.vercel.app/))
-- [Fourthwall](https://github.com/FourthwallHQ/vercel-commerce) ([Demo](https://vercel-storefront.fourthwall.app/))
+```env
+SHOPIFY_STORE_DOMAIN=your-store.myshopify.com
+SHOPIFY_STOREFRONT_ACCESS_TOKEN=your-storefront-token
+SHOPIFY_REVALIDATION_SECRET=your-webhook-secret
+AUTH_SECRET=your-auth-secret
+AUTH_URL=http://localhost:3000
+```
 
-> Note: Providers, if you are looking to use similar products for your demo, you can [download these assets](https://drive.google.com/file/d/1q_bKerjrwZgHwCw0ovfUMW6He9VtepO_/view?usp=sharing).
-
-## Integrations
-
-Integrations enable upgraded or additional functionality for Next.js Commerce
-
-- [Orama](https://github.com/oramasearch/nextjs-commerce) ([Demo](https://vercel-commerce.oramasearch.com/))
-
-  - Upgrades search to include typeahead with dynamic re-rendering, vector-based similarity search, and JS-based configuration.
-  - Search runs entirely in the browser for smaller catalogs or on a CDN for larger.
-
-- [React Bricks](https://github.com/ReactBricks/nextjs-commerce-rb) ([Demo](https://nextjs-commerce.reactbricks.com/))
-  - Edit pages, product details, and footer content visually using [React Bricks](https://www.reactbricks.com) visual headless CMS.
-
-## Running locally
-
-You will need to use the environment variables [defined in `.env.example`](.env.example) to run Next.js Commerce. It's recommended you use [Vercel Environment Variables](https://vercel.com/docs/concepts/projects/environment-variables) for this, but a `.env` file is all that is necessary.
-
-> Note: You should not commit your `.env` file or it will expose secrets that will allow others to control your Shopify store.
-
-1. Install Vercel CLI: `npm i -g vercel`
-2. Link local instance with Vercel and GitHub accounts (creates `.vercel` directory): `vercel link`
-3. Download your environment variables: `vercel env pull`
+### 2. 安装与运行
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-Your app should now be running on [localhost:3000](http://localhost:3000/).
+访问 [localhost:3000](http://localhost:3000) 查看效果。
 
-<details>
-  <summary>Expand if you work at Vercel and want to run locally and / or contribute</summary>
+### 3. 其他命令
 
-1. Run `vc link`.
-1. Select the `Vercel Solutions` scope.
-1. Connect to the existing `commerce-shopify` project.
-1. Run `vc env pull` to get environment variables.
-1. Run `pnpm dev` to ensure everything is working correctly.
-</details>
+```bash
+pnpm build   # 生产构建
+pnpm start   # 生产运行
+```
 
-## Vercel, Next.js Commerce, and Shopify Integration Guide
+## 项目结构
 
-You can use this comprehensive [integration guide](https://vercel.com/docs/integrations/ecommerce/shopify) with step-by-step instructions on how to configure Shopify as a headless CMS using Next.js Commerce as your headless Shopify storefront on Vercel.
+```
+app/                        # 页面路由
+  account/                  # 用户账户（信息、订单）
+  api/auth/                 # NextAuth 认证路由
+  api/search-suggestions/   # 搜索建议 API
+  product/[handle]/         # 商品详情页
+  search/                   # 搜索与分类页
+components/                 # React 组件
+  auth/                     # 登录、注册、用户菜单
+  cart/                     # 购物车组件
+  layout/                   # 导航栏、页脚、搜索
+  product/                  # 商品展示、变体选择器
+lib/                        # 工具库
+  auth/                     # NextAuth 配置
+  shopify/                  # Shopify API 集成
+```
+
+## 部署
+
+推荐部署到 [Vercel](https://vercel.com)，原生支持 ISR 和 Serverless Functions。
+
+1. 将代码推送至 GitHub
+2. 在 Vercel 导入项目
+3. 配置环境变量
+4. 部署完成
+
+详细的 Shopify + Vercel 集成指南请参考 [官方文档](https://vercel.com/docs/integrations/ecommerce/shopify)。
