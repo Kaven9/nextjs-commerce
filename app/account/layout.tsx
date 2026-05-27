@@ -3,12 +3,14 @@ import { auth } from "lib/auth";
 import { redirect } from "next/navigation";
 import Link from "next/link";
 import { UserIcon, ShoppingBagIcon } from "@heroicons/react/24/outline";
+import { connection } from "next/server";
 
 export default async function AccountLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  await connection();
   const session = await auth();
 
   if (!session?.user) {
