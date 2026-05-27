@@ -283,6 +283,113 @@ export type ShopifySearchSuggestionsOperation = {
   };
 };
 
+export type CustomerOrderLineItem = {
+  title: string;
+  quantity: number;
+  variant?: {
+    image?: {
+      url: string;
+      altText?: string;
+    };
+    price: Money;
+  };
+};
+
+export type CustomerOrder = {
+  id: string;
+  orderNumber: string;
+  name: string;
+  processedAt: string;
+  financialStatus: string;
+  fulfillmentStatus: string;
+  totalPrice: Money;
+  lineItems: CustomerOrderLineItem[];
+};
+
+export type Customer = {
+  id: string;
+  email: string;
+  firstName: string;
+  lastName: string;
+  phone?: string;
+  orders: CustomerOrder[];
+};
+
+export type CustomerAccessToken = {
+  accessToken: string;
+  expiresAt: string;
+};
+
+export type ShopifyCustomerAccessTokenCreateOperation = {
+  data: {
+    customerAccessTokenCreate: {
+      customerAccessToken?: CustomerAccessToken;
+      customerUserErrors: {
+        code: string;
+        field?: string[];
+        message: string;
+      }[];
+    };
+  };
+  variables: {
+    input: {
+      email: string;
+      password: string;
+    };
+  };
+};
+
+export type ShopifyCustomerCreateOperation = {
+  data: {
+    customerCreate: {
+      customer?: {
+        id: string;
+        email: string;
+        firstName: string;
+        lastName: string;
+      };
+      customerUserErrors: {
+        code: string;
+        field?: string[];
+        message: string;
+      }[];
+    };
+  };
+  variables: {
+    input: {
+      email: string;
+      password: string;
+      firstName?: string;
+      lastName?: string;
+    };
+  };
+};
+
+export type ShopifyCustomerOperation = {
+  data: {
+    customer?: {
+      id: string;
+      email: string;
+      firstName: string;
+      lastName: string;
+      phone?: string;
+      orders: Connection<{
+        id: string;
+        orderNumber: string;
+        name: string;
+        processedAt: string;
+        financialStatus: string;
+        fulfillmentStatus: string;
+        totalPrice: Money;
+        lineItems: Connection<CustomerOrderLineItem>;
+      }>;
+    };
+  };
+  variables: {
+    customerAccessToken: string;
+  };
+};
+
 export type ShopifyProductsOperation = {
   data: {
     products: Connection<ShopifyProduct>;

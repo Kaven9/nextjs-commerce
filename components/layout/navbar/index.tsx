@@ -1,4 +1,5 @@
 import CartModal from "components/cart/modal";
+import LoginButton from "components/auth/login-button";
 import LogoSquare from "components/logo-square";
 import { getMenu } from "lib/shopify";
 import { Menu } from "lib/shopify/types";
@@ -52,7 +53,8 @@ export async function Navbar() {
             <Search />
           </Suspense>
         </div>
-        <div className="flex justify-end md:w-1/3">
+        <div className="flex items-center justify-end gap-2 md:w-1/3">
+          <LoginButton />
           <CartModal />
         </div>
       </div>

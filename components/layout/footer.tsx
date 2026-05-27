@@ -4,16 +4,18 @@ import FooterMenu from "components/layout/footer-menu";
 import LogoSquare from "components/logo-square";
 import { getMenu } from "lib/shopify";
 import { Suspense } from "react";
+import { connection } from "next/server";
 
 const { COMPANY_NAME, SITE_NAME } = process.env;
 
 export default async function Footer() {
-  const currentYear = new Date().getFullYear();
-  const copyrightDate = 2025 + (currentYear > 2023 ? `-${currentYear}` : "");
   const skeleton =
     "w-full h-6 animate-pulse rounded-sm bg-neutral-200 dark:bg-neutral-700";
   const menu = await getMenu("next-js-frontend-footer-menu");
+  await connection();
   const copyrightName = COMPANY_NAME || SITE_NAME || "";
+  const currentYear = new Date().getFullYear();
+  const copyrightDate = 2025 + (currentYear > 2023 ? `-${currentYear}` : "");
 
   return (
     <footer className="text-sm text-neutral-500 dark:text-neutral-400">
